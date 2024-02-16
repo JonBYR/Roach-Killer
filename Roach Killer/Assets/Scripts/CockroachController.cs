@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CockroachController : MonoBehaviour
 {
-	public Transform position1, position2;
+	public Transform position1, position2; //the transforms the each roach moves between are set in the inspector
 	public float speed = 1.0f;
 	public Transform startPosition;
 	public Animator animator;
@@ -17,7 +17,7 @@ public class CockroachController : MonoBehaviour
 	void Start()
 	{
 		sprRend = GetComponent<SpriteRenderer>();
-		nextPosition = startPosition.position;
+		nextPosition = startPosition.position; //ensures roach starts at correct position
 	}
 
 	// Update is called once per frame
@@ -36,7 +36,7 @@ public class CockroachController : MonoBehaviour
 	}
 	private void OnDrawGizmos()
 	{
-		Gizmos.DrawLine(position1.position, position2.position);
+		Gizmos.DrawLine(position1.position, position2.position); //shows in the inspector but not in game
 	}
 
 }
