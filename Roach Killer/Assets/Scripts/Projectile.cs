@@ -27,11 +27,11 @@ public class Projectile : MonoBehaviour
 		transform.Rotate(0, 0, -3.0f);
 		Vector3 difference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
 		difference.Normalize();
-		float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg;
+		float rotZ = Mathf.Atan2(difference.y, difference.x) * Mathf.Rad2Deg; //angle of gun will be the angle between the vector between the mouse position and the gun position
 		transform.rotation = Quaternion.Euler(0f, 0f, rotZ);
 
 		if ((gun.localEulerAngles.z < 90 && gun.localEulerAngles.z >= 0) || (gun.localEulerAngles.z < 360 && gun.localEulerAngles.z > 270))
-			sprRend.flipY = false;
+			sprRend.flipY = false; //checks the angles of the gun to see whether the gun sprite needs to be flipped
 		else
 			sprRend.flipY = true;
 
@@ -41,8 +41,8 @@ public class Projectile : MonoBehaviour
 			{
 
 				animator.SetTrigger("isShoot");
-				GameObject x = Instantiate(bulletPrefab, gun.position, gun.rotation);
-				x.GetComponent<Rigidbody2D>().velocity = gun.right * 15.0f;
+				GameObject x = Instantiate(bulletPrefab, gun.position, gun.rotation); //instantiates a bullet at the guns position and rotation
+				x.GetComponent<Rigidbody2D>().velocity = gun.right * 15.0f; //gives bullet velocity
 				timer = 1.0f;
 				playerAudio.PlaySound(gunClip);
 			}
